@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta property="og:title" content="Mehedi's Portfolio">
+  <meta property="og:description" content="A Cyber Based Theme Page">
+  <meta property="og:image" content="https://i.postimg.cc/QdYwh03C/Messenger-creation-3-B8901-C8-B2-D3-4-A5-F-A601-DD558-A56-CFEF.jpg">
+  <meta property="og:url" content="https://abir7109.github.io/">
+  <meta property="og:type" content="website">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMART VIEWS - Cyberpunk Profile</title>
+  <!-- Link to external CSS or embed styles directly -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* === Main Code Styles (DO NOT CHANGE) === */
+    /* Global Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000; /* Dark background */
+      color: #0ff; /* Neon cyan text */
+      font-family: 'Orbitron', sans-serif;
+      overflow: hidden;
+    }
+    
+    /* Header Section */
+    header {
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+    header h1 {
+      font-size: 3em;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      animation: neonGlow 1.5s infinite alternate;
+    }
+    
+    @keyframes neonGlow {
+      from {
+        text-shadow:
+          0 0 3px #0ff,
+          0 0 7px #0ff,
+          0 0 15px #0ff,
+          0 0 30px #0ff;
+      }
+      to {
+        text-shadow:
+          0 0 5px #0ff,
+          0 0 10px #0ff,
+          0 0 20px #0ff;
+      }
+    }
+    
+    /* Profile Section */
+    #profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+      position: relative;
+      z-index: 10;
+    }
+    .profile-pic-container {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid #0ff;
+      box-shadow: 0 0 15px #0ff, 0 0 30px #0ff; /* Neon glow effect */
+      cursor: pointer;
+    }
+    .profile-pic-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .profile-info {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .profile-info h2 {
+      font-size: 2em;
+      margin: 0;
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Background Animation */
+    #animation-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      background: linear-gradient(45deg, rgba(0,255,255,0.1), rgba(255,0,255,0.1));
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+	/* Centered Footer */
+	footer {
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	text-align: center;
+	padding: 20px;
+	font-size: 0.8em;
+	z-index: 10;
+	}
+     footer {
+     position: fixed;
+     }
+      
+    
+    /* === New Features: About & CV Box === */
+    /* Modal Overlay */
+    #about-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      z-index: 100;
+    }
+    #about-modal.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    /* Updated About Modal Content Transitions for a smoother effect */
+    .modal-content {
+    background: rgba(0, 0, 0, 0.95);
+    border: 8px solid #0ff;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+    }
+    #about-modal.visible .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+    }
+    
+    /* Close Icon */
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5em;
+      color: #0ff;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .close-modal:hover {
+      color: #0cc;
+    }
+    
+    /* Modal Text */
+    .modal-content h2 {
+      margin: 0;
+      font-size: 1.8em;
+      text-shadow: 0 0 5px #0ff;
+    }
+    .intro-text {
+      font-size: 1em;
+      margin: 10px 0 15px 0;
+      text-shadow: 0 0 3px #0ff;
+    }
+    
+    /* CV Box */
+    #cv-box {
+      margin-top: 15px;
+    }
+    .cv-line {
+      margin: 10px 0;
+      padding-bottom: 5px;
+      border-bottom: 2px solid #0ff;
+      transition: border-color 0.3s ease;
+    }
+    .cv-line:hover {
+      border-color: #0cc;
+    }
+    .label {
+      font-weight: bold;
+    }
+    .emoji {
+      margin-left: 10px;
+    }
+    
+    /* Portfolio Button */
+    #portfolio-button-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+    #portfolio-button {
+      padding: 10px 20px;
+      background: #0ff;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      box-shadow: 0 0 10px #0ff;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    #portfolio-button:hover {
+      background: #0cc;
+      transform: scale(1.05);
+    }   
+  </style>
+</head>
+<body>
+  <!-- === Main Code (DO NOT CHANGE) === -->
+  <!-- Background animation layer -->
+  <div id="animation-container"></div>
+  
+  <!-- Header -->
+  <header>
+    <h1>MEHEDI HASAN</h1>
+  </header>
+  
+  <!-- Profile Section -->
+  <section id="profile">
+    <div class="profile-pic-container">
+      <img src="https://i.postimg.cc/QdYwh03C/Messenger-creation-3-B8901-C8-B2-D3-4-A5-F-A601-DD558-A56-CFEF.jpg" alt="Profile Picture"><br> 
+    </div>
+    <div class="profile-info">
+      <h2>Cyber World</h2>
+      <p>A glimpse into the digital soul.</p>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    © 2025 All right saved to MEHEDI
+      </footer>
+  
+  <!-- === New Feature: About Modal Markup === -->
+  <div id="about-modal">
+    <div class="modal-content">
+      <!-- Cross Icon for closing modal -->
+      <div class="close-modal" id="closeModal">&times;</div>
+      <h2>About Me</h2>
+      <p class="intro-text">Welcome to the identity of Mehedi Hasan.</p>
+      <!-- CV Box -->
+      <div id="cv-box">
+        <p class="cv-line"><span class="label">NAME:</span> MEHEDI HASAN<span class="emoji">😎</span></p>
+        <p class="cv-line"><span class="label">HOME:</span> EARTH 2.0 <span class="emoji">🏡</span></p>
+        <p class="cv-line"><span class="label">AGE:</span> SYNTAX ERROR️ <span class="emoji">🕹️</span></p>
+        <p class="cv-line"><span class="label">EDUCATION:</span> HSC (RUNNING) <span class="emoji">🎓</span></p>
+        <p class="cv-line"><span class="label">SEX:</span> MALE <span class="emoji">👨</span></p>
+      </div>
+      <!-- Portfolio Button -->
+      <div id="portfolio-button-container">
+        <a href="https://www.facebook.com/profile.php?id=61570262932499" id="portfolio-button">FACEBOOK</a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- === New Feature: JavaScript for Modal Interaction === -->
+  <script>
+    // Select the profile picture element (using querySelector on the class)
+    const profilePic = document.querySelector(".profile-pic-container");
+  
+    // Functions to apply or remove the blur filter on all body children except the modal
+    function blurMainContent() {
+      document.querySelectorAll("body > :not(#about-modal)").forEach(el => {
+        el.style.filter = "blur(8px)";
+      });
+    }
+    function unblurMainContent() {
+      document.querySelectorAll("body > :not(#about-modal)").forEach(el => {
+        el.style.filter = "";
+      });
+    }
+  
+    // Get the about modal and close button
+    const aboutModal = document.getElementById("about-modal");
+    const closeModal = document.getElementById("closeModal");
+  
+    // When the profile picture is clicked, add blur and show the modal
+    profilePic.addEventListener("click", () => {
+      blurMainContent();
+      aboutModal.classList.add("visible");
+    });
+  
+    // When the cross icon is clicked, hide the modal and remove blur
+    closeModal.addEventListener("click", () => {
+      aboutModal.classList.remove("visible");
+      unblurMainContent();
+    });
+  </script>
+</body>
+</html>
